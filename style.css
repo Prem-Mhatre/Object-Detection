@@ -30,3 +30,15 @@ a h1:hover{
     margin: 5px;
     box-shadow: 10px 10px 10px grey;
 }
+#status{
+    font-size: 30px;
+}
+canvas{
+    border-radius: 50px;
+    box-shadow: -10px -10px 10px white, 10px 10px 10px black; 
+}
+.back_btn{
+    float: right;
+    margin-top: 10px;
+    font-size: 20px;
+}

@@ -1,5 +1,6 @@
 img = "";
 status = "";
+objects = [];
 function preload(){
     img = loadImage("bedroom.png");
 }
@@ -14,6 +15,18 @@ function draw(){
 
     document.getElementById("status").innerHTML = "Status: Detecting Objects";
     object_detector = ml5.objectDetector("cocossd", modelLoaded);
+
+    if(status){
+        for(i = 0; i < objects.length; i++){
+            document.getElementById("status").innerHTML = "Status: Object Detected";
+        
+            fill("red");
+            text(objects[i].label + " " + floor(objects[i].confidence * 100) + "%", objects[i].x, objects[i].y+15);
+            noFill();
+            stroke("red");
+            rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
+        }
+    }
 }
 
 function modelLoaded(){
@@ -28,5 +41,7 @@ function gotResult(error, results){
     }
     else{
         console.log(results);
+
+        objects = results;
     }
 }
